@@ -3,26 +3,22 @@ import { NavLink } from 'react-router-dom';
 
 const NavBar = props => {
   return (
-    <div style={{ borderBottom: '2px solid black', paddingBottom: '10px', marginBottom: '12px' }}>
-      <NavLink
-        style={{ marginRight: '10px' }}
-        to="/"
-      >
-        Home
-      </NavLink>
-      <NavLink
-        style={{ marginRight: '10px' }}
-        to="/movies"
-      >
-        Movies
-      </NavLink>
-      <NavLink
-        style={{ marginRight: '10px' }}
-        to="/movies/new"
-      >
-        Add Movie
-      </NavLink>
-    </div>
+    <nav className="navbar navbar-expand-sm bg-primary navbar-dark">
+      <a className="navbar-brand" href="/"><span className="fa fa-film"></span>MovieDB</a>
+
+      <ul className="navbar-nav">
+        <li className="nav-item">
+          <a class="nav-link" href="/movies">Movies</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" href="/movies/new">Add Movie</a>
+        </li>
+      </ul>
+
+  </nav>
+
+
+
   );
 }
 
