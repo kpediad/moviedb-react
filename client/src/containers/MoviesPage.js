@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom'; // notice we are now importing Switch
 import { connect } from 'react-redux';
-import MoviesList from '../components/MoviesList';
+import MovieTable from '../components/MovieTable';
 import MovieShow from './MovieShow';
 import MoviesNew from './MoviesNew';
 import MoviesEdit from './MoviesEdit';
@@ -10,7 +10,7 @@ const MoviesPage = ({ match, movies }) =>
   <div className="container-fluid" >
     <div className="row justify-content-center">
       <div className="col-6">
-        <MoviesList movies={movies} />
+        <MovieTable movies={movies} />
       </div>
       <div className="col-6">
         <Switch> {/* Make sure to wrap all of your Routes as children of the Switch component*/ }
