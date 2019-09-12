@@ -30,13 +30,33 @@ class MoviesNew extends Component {
 
   render(){
     return (
-      <form style={{ marginTop: '16px' }} onSubmit={this.handleOnSubmit} >
-        <input
-          type="text"
-          onChange={this.handleOnChange}
-          placeholder="Add a Movie" />
-        <input type="submit" value="Add Movie" />
-      </form>
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-sm-6">
+            <div className="form-box">
+              <h3 style={{textAlign: 'center'}}>Add a new Movie</h3>
+              <div className="form-group">
+                <form onSubmit={this.handleOnSubmit} >
+                  <label className="col-form-label col-form-label-sm">Title: </label>
+                  <input
+                    className="form-control"
+                    type="text"
+                    onChange={this.handleOnChange} />
+                  <label className="col-form-label col-form-label-sm">Release Year: </label>
+                  <input
+                    className="form-control"
+                    type="number"
+                    onChange={this.handleOnChange} />
+                  <label className="col-form-label col-form-label-sm">Synopsis: </label>
+                  <textarea className="form-control" rows="4" onChange={this.handleOnChange} />
+                  <br />
+                  <input type="submit" className="btn btn-success" value="Add Movie" />
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }
