@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addMovie } from '../actions';
+import { deleteMovie } from '../actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp, faThumbsDown, faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
 
@@ -10,7 +10,7 @@ class MovieShow extends Component {
     super();
   }
 
-  handleDeleteClick = event => {
+  handleUpvoteClick = event => {
     event.preventDefault();
     // Destructure addMovie and history from the components props
     //const { addMovie, history } = this.props;
@@ -30,14 +30,14 @@ class MovieShow extends Component {
     //history.push('/movies')
   }
 
-  handleUpvoteClick = event => {
+  handleDeleteClick = event => {
     event.preventDefault();
     // Destructure addMovie and history from the components props
-    //const { addMovie, history } = this.props;
-    // Create the movie with the Redux action
-    //addMovie(this.state);
+    const { deleteMovie, history } = this.props;
+    // Delete the movie with the Redux action
+    deleteMovie(this.props.movie);
     // redirect to /movies route
-    //history.push('/movies')
+    history.push('/movies')
   }
 
   handleDownvoteClick = event => {
@@ -105,4 +105,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps)(MovieShow);
+export default connect(mapStateToProps, {deleteMovie})(MovieShow);
