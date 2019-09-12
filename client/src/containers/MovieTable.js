@@ -25,14 +25,39 @@ class MovieTable extends Component {
   }
 
   handleHeaderClick = column => {
-    sortMovie(this.state);
+    let new_sort_direction = 'asc';
+    if (column === this.state.sort_column) {
+      new_sort_direction = toggle(this.state.sort_direction);
+    }
+    sortMovie(column, new_sort_direction);
     this.setState({
       sort_column: column,
-      sort_direction: toggle(this.state.sort_direction)
+      sort_direction: new_sort_direction
     });
   }
 
   render(){
+    let titleHeader = <th scope="col" onClick={this.handleHeaderClick('title')}>Title</th>;
+    if(this.state.sort_column === 'title') {
+      titleHeader = <th scope="col" onClick={this.handleHeaderClick('title')}>Title <FontAwesomeIcon icon={faSortUp} /></th>;
+      if(this.state.sort_direction === 'desc') {
+        titleHeader = <th scope="col" onClick={this.handleHeaderClick('title')}>Title <FontAwesomeIcon icon={faSortDown} /></th>;
+      }
+    }
+    let yearHeader = <th scope="col" onClick={this.handleHeaderClick('year')}>Release Year</th>;
+    if(this.state.sort_column === 'year') {
+      yearHeader = <th scope="col" onClick={this.handleHeaderClick('year')}>Release Year <FontAwesomeIcon icon={faSortUp} /></th>;
+      if(this.state.sort_direction === 'desc') {
+        yearHeader = <th scope="col" onClick={this.handleHeaderClick('year')}>Release Year <FontAwesomeIcon icon={faSortDown} /></th>;
+      }
+    }
+    let scoreHeader = <th scope="col" onClick={this.handleHeaderClick('score')}>Movie Score</th>;
+    if(this.state.sort_column === 'score') {
+      scoreHeader = <th scope="col" onClick={this.handleHeaderClick('score')}>Movie Score <FontAwesomeIcon icon={faSortUp} /></th>;
+      if(this.state.sort_direction === 'desc') {
+        scoreHeader = <th scope="col" onClick={this.handleHeaderClick('score')}>Movie Score <FontAwesomeIcon icon={faSortDown} /></th>;
+      }
+    }
     return (
       <div className="container" >
         <div className="row justify-content-center">
@@ -43,16 +68,16 @@ class MovieTable extends Component {
                   <th colspan="3" scope="col">Movies List</th>
                 </tr>
                 <tr className="table-primary">
-                  <th scope="col">Title</th>
-                  <th scope="col">Release Year</th>
-                  <th scope="col">Movie Score</th>
+                  {titleHeader}
+                  {yearHeader}
+                  {scoreHeader}
                 </tr>
               </thead>
               <MoviesList movies={this.props.movies} />
             </table>
           </div>
         </div>
-      </div>    
+      </div>
     );
   };
 }
