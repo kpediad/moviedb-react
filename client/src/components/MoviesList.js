@@ -1,14 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import MoviesListItem from './MoviesListItem';
 
 const MoviesList = ({ movies }) => {
-  const renderMovies = movies.map(movie => 
-    <Link style={{ marginRight: '12px' }} key={movie.id} to={`/movies/${movie.id}`}>{movie.title}</Link>
+  const renderTableRows = movies.map(movie =>
+      <MoviesListItem movie={movie} />
   );
-  
+
   return (
-    <div>
-      {renderMovies}
+    <div className="container" >
+      <div className="row justify-content-center">
+          <table className="table bg-light" style={{textAlign: 'center'}}>
+            <thead>
+              <tr className="table-primary">
+                <th colspan="3" scope="col">Movies List</th>
+              </tr>
+              <tr className="table-primary">
+                <th scope="col">Title</th>
+                <th scope="col">Release Year</th>
+                <th scope="col">Movie Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              {renderTableRows}
+            </tbody>
+          </table>
+      </div>
     </div>
   );
 };
