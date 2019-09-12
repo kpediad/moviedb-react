@@ -21,3 +21,17 @@ export function editMovie(movie) {
     movie
   };
 }
+
+export function upvoteMovie(movie) {
+  return {
+    type: 'UPVOTE_MOVIE',
+    movie
+  };
+}
+
+export function downvoteMovie(movie) {
+  return {
+    type: 'DOWNVOTE_MOVIE',
+    movie
+  };
+}

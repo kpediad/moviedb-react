@@ -10,7 +10,8 @@ class MoviesNew extends Component {
     this.state = {
       title: '',
       release_year: '',
-      synopsis: ''
+      synopsis: '',
+      score: 0
     };
   }
 

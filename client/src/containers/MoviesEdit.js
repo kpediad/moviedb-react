@@ -12,7 +12,8 @@ class MoviesEdit extends Component {
       id: this.props.movie.id,
       title: this.props.movie.title,
       release_year: this.props.movie.release_year,
-      synopsis: this.props.movie.synopsis
+      synopsis: this.props.movie.synopsis,
+      score: this.props.movie.score
     };
   }
 

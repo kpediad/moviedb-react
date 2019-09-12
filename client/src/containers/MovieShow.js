@@ -1,38 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { deleteMovie } from '../actions';
+import { deleteMovie, upvoteMovie, downvoteMovie } from '../actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp, faThumbsDown, faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 class MovieShow extends Component {
 
-  constructor() {
-    super();
-  }
-
   handleUpvoteClick = event => {
     event.preventDefault();
-    // Destructure addMovie and history from the components props
-    //const { addMovie, history } = this.props;
+    // Destructure UpvoteMovie and history from the components props
+    const { upvoteMovie, history } = this.props;
     // Create the movie with the Redux action
-    //addMovie(this.state);
-    // redirect to /movies route
-    //history.push('/movies')
+    upvoteMovie(this.props.movie);
+    // redirect to /movies/:movieId route
+    //history.push(`/movies/${this.props.movie.id}`);
+    //this.forceUpdate();
   }
 
   handleEditClick = event => {
     event.preventDefault();
-    // Destructure addMovie and history from the components props
+    // Destructure history from the components props
     const { history } = this.props;
-    // Create the movie with the Redux action
-    //addMovie(this.state);
-    // redirect to /movies route
+    // redirect to /movies/:movieId/edit route
     history.push(`/movies/${this.props.movie.id}/edit`);
   }
 
   handleDeleteClick = event => {
     event.preventDefault();
-    // Destructure addMovie and history from the components props
+    // Destructure deleteMovie and history from the components props
     const { deleteMovie, history } = this.props;
     // Delete the movie with the Redux action
     deleteMovie(this.props.movie);
@@ -42,12 +37,13 @@ class MovieShow extends Component {
 
   handleDownvoteClick = event => {
     event.preventDefault();
-    // Destructure addMovie and history from the components props
-    //const { addMovie, history } = this.props;
+    // Destructure downvoteMovie and history from the components props
+    const { downvoteMovie, history } = this.props;
     // Create the movie with the Redux action
-    //addMovie(this.state);
-    // redirect to /movies route
-    //history.push('/movies')
+    downvoteMovie(this.props.movie);
+    // redirect to /movies/:movieId route
+    //history.push(`/movies/${this.props.movie.id}`);
+    //this.forceUpdate();
   }
 
   render(){
@@ -61,7 +57,7 @@ class MovieShow extends Component {
               </tr>
               <tr>
                 <th id="year">Year: {this.props.movie.release_year}</th>
-                <th id="score">Score: </th>
+                <th id="score">Score: {this.props.movie.score}</th>
               </tr>
               <tr className="table-primary" style={{textAlign: 'center'}}>
                 <th colspan="3" scope="col">Synopsis</th>
@@ -105,4 +101,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps, {deleteMovie})(MovieShow);
+export default connect(mapStateToProps, {deleteMovie, upvoteMovie, downvoteMovie})(MovieShow);
