@@ -6,18 +6,20 @@ import MovieShow from './MovieShow';
 import MoviesNew from './MoviesNew';
 
 const MoviesPage = ({ match, movies }) =>
-  <div className="row">
-    <div className="col">
-      <MoviesList movies={movies} />
-    </div>
-    <div className="col">
-      <Switch> {/* Make sure to wrap all of your Routes as children of the Switch component*/ }
-        <Route path={`${match.url}/new`} component={MoviesNew} />
-        <Route path={`${match.url}/:movieId`} component={MovieShow}/>
-        <Route exact path={match.url} render={() => (
-          <h3 style={{textAlign: 'center'}}>Select a movie from the list</h3>
-        )}/>
-      </Switch>
+  <div className="container-fluid" >
+    <div className="row justify-content-center">
+      <div className="col-6">
+        <MoviesList movies={movies} />
+      </div>
+      <div className="col-6">
+        <Switch> {/* Make sure to wrap all of your Routes as children of the Switch component*/ }
+          <Route path={`${match.url}/new`} component={MoviesNew} />
+          <Route path={`${match.url}/:movieId`} component={MovieShow}/>
+          <Route exact path={match.url} render={() => (
+            <h3 style={{textAlign: 'center'}}>Select a movie from the list</h3>
+          )}/>
+        </Switch>
+      </div>
     </div>
   </div>;
 

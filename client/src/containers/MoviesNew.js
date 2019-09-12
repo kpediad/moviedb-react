@@ -8,7 +8,9 @@ class MoviesNew extends Component {
     super();
 
     this.state = {
-      title: ''
+      title: '',
+      release_year: '',
+      synopsis: ''
     };
   }
 
@@ -22,9 +24,21 @@ class MoviesNew extends Component {
     history.push('/movies')
   }
 
-  handleOnChange = event => {
+  handleTitleOnChange = event => {
     this.setState({
       title: event.target.value
+    });
+  }
+
+  handleYearOnChange = event => {
+    this.setState({
+      release_year: event.target.value
+    });
+  }
+
+  handleSynopsisOnChange = event => {
+    this.setState({
+      synopsis: event.target.value
     });
   }
 
@@ -32,7 +46,7 @@ class MoviesNew extends Component {
     return (
       <div className="container">
         <div className="row justify-content-center">
-          <div className="col-sm-6">
+          <div className="col-10">
             <div className="form-box">
               <h3 style={{textAlign: 'center'}}>Add a new Movie</h3>
               <div className="form-group">
@@ -41,14 +55,14 @@ class MoviesNew extends Component {
                   <input
                     className="form-control"
                     type="text"
-                    onChange={this.handleOnChange} />
+                    onChange={this.handleTitleOnChange} />
                   <label className="col-form-label col-form-label-sm">Release Year: </label>
                   <input
                     className="form-control"
                     type="number"
-                    onChange={this.handleOnChange} />
+                    onChange={this.handleYearOnChange} />
                   <label className="col-form-label col-form-label-sm">Synopsis: </label>
-                  <textarea className="form-control" rows="4" onChange={this.handleOnChange} />
+                  <textarea className="form-control" rows="4" onChange={this.handleSynopsisOnChange} />
                   <br />
                   <input type="submit" className="btn btn-success" value="Add Movie" />
                 </form>
