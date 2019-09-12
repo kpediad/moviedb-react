@@ -9,7 +9,7 @@ const MoviesList = ({ movies }) => {
   return (
     <div className="container" >
       <div className="row justify-content-center">
-          <table className="table bg-light" style={{textAlign: 'center'}}>
+          <table className="table table-bordered bg-light" style={{textAlign: 'center'}}>
             <thead>
               <tr className="table-primary">
                 <th colspan="3" scope="col">Movies List</th>

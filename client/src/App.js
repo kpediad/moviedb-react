@@ -14,6 +14,7 @@ class App extends Component {
       <Router>
         <div>
           <NavBar />
+          <br />
           <Route exact path="/" component={MovieDBHome} />
           <Route path='/movies' component={MoviesPage}/>
           <Route path='/about' component={MovieDBAbout}/>
