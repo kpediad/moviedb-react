@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom'; // notice we are now importing Switch
 import { connect } from 'react-redux';
-import MovieTable from '../components/MovieTable';
+import MovieTable from './MovieTable';
 import MovieShow from './MovieShow';
 import MoviesNew from './MoviesNew';
 import MoviesEdit from './MoviesEdit';

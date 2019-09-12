@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import MoviesList from '../components/MoviesList';
 import { connect } from 'react-redux';
-import { sortMovie } from '../actions';
+import { sortMovies } from '../actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 class MovieTable extends Component {
   constructor(props) {
@@ -27,9 +28,9 @@ class MovieTable extends Component {
   handleHeaderClick = column => {
     let new_sort_direction = 'asc';
     if (column === this.state.sort_column) {
-      new_sort_direction = toggle(this.state.sort_direction);
+      new_sort_direction = this.toggle(this.state.sort_direction);
     }
-    sortMovie(column, new_sort_direction);
+    sortMovies(column, new_sort_direction);
     this.setState({
       sort_column: column,
       sort_direction: new_sort_direction
@@ -37,25 +38,25 @@ class MovieTable extends Component {
   }
 
   render(){
-    let titleHeader = <th scope="col" onClick={this.handleHeaderClick('title')}>Title</th>;
+    let titleHeader = <th scope="col" onClick={() => this.handleHeaderClick('title')}><Link style={{ textDecoration: 'none' }}>Title</Link></th>;
     if(this.state.sort_column === 'title') {
-      titleHeader = <th scope="col" onClick={this.handleHeaderClick('title')}>Title <FontAwesomeIcon icon={faSortUp} /></th>;
+      titleHeader = <th scope="col" onClick={() => this.handleHeaderClick('title')}><Link style={{ textDecoration: 'none' }}>Title <FontAwesomeIcon icon={faSortUp} /></Link></th>;
       if(this.state.sort_direction === 'desc') {
-        titleHeader = <th scope="col" onClick={this.handleHeaderClick('title')}>Title <FontAwesomeIcon icon={faSortDown} /></th>;
+        titleHeader = <th scope="col" onClick={() => this.handleHeaderClick('title')}><Link style={{ textDecoration: 'none' }}>Title <FontAwesomeIcon icon={faSortDown} /></Link></th>;
       }
     }
-    let yearHeader = <th scope="col" onClick={this.handleHeaderClick('year')}>Release Year</th>;
+    let yearHeader = <th scope="col" onClick={() => this.handleHeaderClick('year')}><Link style={{ textDecoration: 'none' }}>Release Year</Link></th>;
     if(this.state.sort_column === 'year') {
-      yearHeader = <th scope="col" onClick={this.handleHeaderClick('year')}>Release Year <FontAwesomeIcon icon={faSortUp} /></th>;
+      yearHeader = <th scope="col" onClick={() => this.handleHeaderClick('year')}><Link style={{ textDecoration: 'none' }}>Release Year <FontAwesomeIcon icon={faSortUp} /></Link></th>;
       if(this.state.sort_direction === 'desc') {
-        yearHeader = <th scope="col" onClick={this.handleHeaderClick('year')}>Release Year <FontAwesomeIcon icon={faSortDown} /></th>;
+        yearHeader = <th scope="col" onClick={() => this.handleHeaderClick('year')}><Link style={{ textDecoration: 'none' }}>Release Year <FontAwesomeIcon icon={faSortDown} /></Link></th>;
       }
     }
-    let scoreHeader = <th scope="col" onClick={this.handleHeaderClick('score')}>Movie Score</th>;
+    let scoreHeader = <th scope="col" onClick={() => this.handleHeaderClick('score')}><Link style={{ textDecoration: 'none' }}>Movie Score</Link></th>;
     if(this.state.sort_column === 'score') {
-      scoreHeader = <th scope="col" onClick={this.handleHeaderClick('score')}>Movie Score <FontAwesomeIcon icon={faSortUp} /></th>;
+      scoreHeader = <th scope="col" onClick={() => this.handleHeaderClick('score')}><Link style={{ textDecoration: 'none' }}>Movie Score <FontAwesomeIcon icon={faSortUp} /></Link></th>;
       if(this.state.sort_direction === 'desc') {
-        scoreHeader = <th scope="col" onClick={this.handleHeaderClick('score')}>Movie Score <FontAwesomeIcon icon={faSortDown} /></th>;
+        scoreHeader = <th scope="col" onClick={() => this.handleHeaderClick('score')}><Link style={{ textDecoration: 'none' }}>Movie Score <FontAwesomeIcon icon={faSortDown} /></Link></th>;
       }
     }
     return (
@@ -82,4 +83,4 @@ class MovieTable extends Component {
   };
 }
 
-export default connect(null, {sortMovie})(MovieTable);
+export default connect(null, {sortMovies})(MovieTable);

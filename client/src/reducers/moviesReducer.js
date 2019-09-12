@@ -26,6 +26,10 @@ export default (state = [], action) => {
       selectedMovie.score--;
       return [].concat(state.slice(0, idx), selectedMovie, state.slice(idx + 1, state.length));
 
+    case 'SORT_MOVIES':
+      // I NEED TO IMPLEMENT THE SORTING FUNCTION HERE !!!
+      return state;
+
     case 'FETCH_MOVIES':
       return action.movies;
 

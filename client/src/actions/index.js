@@ -35,3 +35,11 @@ export function downvoteMovie(movie) {
     movie
   };
 }
+
+export function sortMovies(column, direction) {
+  return {
+    type: 'SORT_MOVIES',
+    column,
+    direction
+  };
+}
