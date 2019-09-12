@@ -9,6 +9,7 @@ const MoviesList = ({ movies }) => {
   return (
     <div className="container" >
       <div className="row justify-content-center">
+        <div className="col-12">
           <table className="table table-bordered bg-light" style={{textAlign: 'center'}}>
             <thead>
               <tr className="table-primary">
@@ -24,6 +25,7 @@ const MoviesList = ({ movies }) => {
               {renderTableRows}
             </tbody>
           </table>
+        </div>
       </div>
     </div>
   );
