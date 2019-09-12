@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addMovie } from '../actions';
+import { editMovie } from '../actions';
+import { Link } from 'react-router-dom';
 
-class MoviesNew extends Component {
+class MoviesEdit extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      title: '',
-      release_year: '',
-      synopsis: ''
+      id: this.props.movie.id,
+      title: this.props.movie.title,
+      release_year: this.props.movie.release_year,
+      synopsis: this.props.movie.synopsis
     };
   }
 
   handleOnSubmit = event => {
     event.preventDefault();
     // Destructure addMovie and history from the components props
-    const { addMovie, history } = this.props;
+    const { editMovie, history } = this.props;
     // Create the movie with the Redux action
-    addMovie(this.state);
+    editMovie(this.state);
     // redirect to /movies route
     history.push('/movies')
   }
@@ -48,23 +50,25 @@ class MoviesNew extends Component {
         <div className="row justify-content-center">
           <div className="col-10">
             <div className="form-box">
-              <h3 style={{textAlign: 'center'}}>Add a new Movie</h3>
+              <h3 style={{textAlign: 'center'}}>Edit Movie</h3>
               <div className="form-group">
                 <form onSubmit={this.handleOnSubmit} >
                   <label className="col-form-label col-form-label-sm">Title: </label>
                   <input
                     className="form-control"
                     type="text"
-                    onChange={this.handleTitleOnChange} />
+                    onChange={this.handleTitleOnChange}
+                    value={this.state.title}/>
                   <label className="col-form-label col-form-label-sm">Release Year: </label>
                   <input
                     className="form-control"
                     type="number"
-                    onChange={this.handleYearOnChange} />
+                    onChange={this.handleYearOnChange}
+                    value={this.state.release_year} />
                   <label className="col-form-label col-form-label-sm">Synopsis: </label>
-                  <textarea className="form-control" rows="8" onChange={this.handleSynopsisOnChange} />
+                  <textarea className="form-control" rows="8" onChange={this.handleSynopsisOnChange} value={this.state.synopsis}/>
                   <br />
-                  <input type="submit" className="btn btn-success" value="Add Movie" />
+                  <input type="submit" className="btn btn-primary" value="Edit Movie" />
                 </form>
               </div>
             </div>
@@ -72,7 +76,17 @@ class MoviesNew extends Component {
         </div>
       </div>
     );
+  };
+}
+
+const mapStateToProps = (state, ownProps) => {
+  const movie = state.movies.find(movie => movie.id == ownProps.match.params.movieId)
+
+  if (movie) {
+    return { movie }
+  } else {
+    return { movie: {} }
   }
 }
 
-export default connect(null, { addMovie })(MoviesNew)
+export default connect(mapStateToProps, {editMovie})(MoviesEdit);

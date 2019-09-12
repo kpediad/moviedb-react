@@ -14,3 +14,10 @@ export function deleteMovie(movie) {
     movie
   };
 }
+
+export function editMovie(movie) {
+  return {
+    type: 'EDIT_MOVIE',
+    movie
+  };
+}
