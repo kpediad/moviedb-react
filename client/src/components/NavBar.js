@@ -9,6 +9,7 @@ const NavBar = props => {
       <NavLink className="navbar-brand" to="/"><FontAwesomeIcon icon={faFilm} /> MovieDB</NavLink>
       <NavLink className="nav-link text-light" to="/movies">Movies</NavLink>
       <NavLink className="nav-link text-light" to="/movies/new">Add Movie</NavLink>
+      <NavLink className="nav-link text-light" to="/about">About MovieDB</NavLink>
     </nav>
   );
 }

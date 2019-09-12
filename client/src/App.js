@@ -5,6 +5,8 @@ import {
 } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import MoviesPage from './containers/MoviesPage';
+import MovieDBHome from './components/MovieDBHome';
+import MovieDBAbout from './components/MovieDBAbout';
 
 class App extends Component {
   render() {
@@ -12,8 +14,9 @@ class App extends Component {
       <Router>
         <div>
           <NavBar />
-          <Route exact path="/" render={() => <div>Home</div>} />
+          <Route exact path="/" component={MovieDBHome} />
           <Route path='/movies' component={MoviesPage}/>
+          <Route path='/about' component={MovieDBAbout}/>
         </div>
       </Router>
     );
