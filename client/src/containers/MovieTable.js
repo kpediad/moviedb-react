@@ -70,7 +70,7 @@ class MovieTable extends Component {
             <table className="table table-bordered bg-light" style={{textAlign: 'center'}}>
               <thead>
                 <tr className="table-primary">
-                  <th colspan="3" scope="col">Movies List</th>
+                  <th colSpan="3" scope="col">Movies List</th>
                 </tr>
                 <tr className="table-primary">
                   {titleHeader}

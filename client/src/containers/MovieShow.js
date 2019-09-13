@@ -53,17 +53,17 @@ class MovieShow extends Component {
           <table className="table bg-light" style={{textAlign: 'center'}}>
             <thead>
               <tr className="table-primary">
-                <th colspan="3" scope="col" id="movie">{this.props.movie.title}</th>
+                <th colSpan="3" scope="col" id="movie">{this.props.movie.title}</th>
               </tr>
               <tr>
                 <th id="year">Year: {this.props.movie.release_year}</th>
                 <th id="score">Score: {this.props.movie.score}</th>
               </tr>
               <tr className="table-primary" style={{textAlign: 'center'}}>
-                <th colspan="3" scope="col">Synopsis</th>
+                <th colSpan="3" scope="col">Synopsis</th>
               </tr>
               <tr style={{textAlign: 'justify'}}>
-                <td colspan="3" id="synopsis">{this.props.movie.synopsis}</td>
+                <td colSpan="3" id="synopsis">{this.props.movie.synopsis}</td>
               </tr>
             </thead>
             <tbody>
@@ -92,7 +92,7 @@ class MovieShow extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const movie = state.movies.find(movie => movie.id === ownProps.match.params.movieId)
+  const movie = state.movies.find(movie => movie.id == ownProps.match.params.movieId)
 
   if (movie) {
     return { movie }
