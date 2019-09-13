@@ -1,11 +1,18 @@
-let counter = 10;
-
 export function addMovie(movie) {
-  movie.id = ++counter;
-  return {
-    type: 'ADD_MOVIE',
-    movie
-  };
+  console.log(JSON.stringify({movie: movie}));
+  console.log({movie: movie});
+  return function(dispatch){
+    return fetch('/movies', {
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({movie: movie})
+    }).then(res => {
+        return res.json()
+      }).then(responseJson => {
+        console.log(responseJson);
+      //dispatch({type: 'ADD_MOVIE', movie})
+    })
+  }
 }
 
 export function deleteMovie(movie) {
