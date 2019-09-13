@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addMovie } from '../actions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlusSquare, faWindowClose } from '@fortawesome/free-solid-svg-icons';
 
 class MoviesNew extends Component {
 
@@ -23,6 +25,14 @@ class MoviesNew extends Component {
     addMovie(this.state);
     // redirect to /movies route
     history.push('/movies')
+  }
+
+  handleOnCancel = event => {
+    event.preventDefault();
+    // Destructure history from the components props
+    const { history } = this.props;
+    // redirect to /movies route
+    history.push('/movies');
   }
 
   handleTitleOnChange = event => {
@@ -65,7 +75,14 @@ class MoviesNew extends Component {
                   <label className="col-form-label col-form-label-sm">Synopsis: </label>
                   <textarea className="form-control" rows="8" onChange={this.handleSynopsisOnChange} />
                   <br />
-                  <input type="submit" className="btn btn-success" value="Add Movie" />
+                  <div className="row">
+                    <div className="col-6">
+                      <button type="submit" className="btn btn-success"><FontAwesomeIcon icon={faPlusSquare} /> Add Movie</button>
+                    </div>
+                    <div className="col-6 text-right">
+                      <button className="btn btn-danger" onClick={this.handleOnCancel}><FontAwesomeIcon icon={faWindowClose} /> Cancel</button>
+                    </div>
+                  </div>
                 </form>
               </div>
             </div>
