@@ -1,7 +1,7 @@
 export default (state = [], action) => {
   let idx;
   let selectedMovie;
-  
+
   switch (action.type) {
 
     case 'ADD_MOVIE':
@@ -69,6 +69,9 @@ export default (state = [], action) => {
 
     case 'FETCH_MOVIES':
       return action.movies;
+
+    case 'LOADING_MOVIES':
+      return [];
 
     default:
       return state;

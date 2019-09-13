@@ -1,4 +1,4 @@
-let counter = 3;
+let counter = 10;
 
 export function addMovie(movie) {
   movie.id = ++counter;
@@ -41,5 +41,26 @@ export function sortMovies(column, direction) {
     type: 'SORT_MOVIES',
     column,
     direction
+  };
+}
+
+export function fetchMovies() {
+
+  return function(dispatch){
+    dispatch({type: 'LOADING_MOVIES'})
+    return fetch('/movies.json')
+      .then(res => {
+        return res.json()
+      }).then(responseJson => {
+        dispatch({type: 'FETCH_MOVIES', movies: responseJson})
+    })
+
+  }
+}
+
+export function loadingMovies(){
+  return {
+    type: 'LOADING_MOVIES',
+    movies : []
   };
 }
