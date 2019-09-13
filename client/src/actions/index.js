@@ -53,6 +53,7 @@ export function fetchMovies() {
         return res.json()
       }).then(responseJson => {
         dispatch({type: 'FETCH_MOVIES', movies: responseJson})
+        dispatch({type: 'SORT_MOVIES', column: 'title', direction: 'asc'})
     })
 
   }

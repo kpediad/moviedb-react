@@ -14,9 +14,6 @@ class MovieTable extends Component {
       sort_column: 'title',
       sort_direction: 'asc'
     };
-
-    const { sortMovies } = this.props;
-    sortMovies(this.state.sort_column, this.state.sort_direction);
   }
 
   toggle = direction => {
