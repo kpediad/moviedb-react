@@ -97,7 +97,7 @@ class MoviesEdit extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const movie = state.movies.find(movie => movie.id == ownProps.match.params.movieId)
+  const movie = state.movies.find(movie => movie.id === ownProps.match.params.movieId)
 
   if (movie) {
     return { movie }
