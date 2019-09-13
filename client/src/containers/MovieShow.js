@@ -8,8 +8,8 @@ class MovieShow extends Component {
 
   handleUpvoteClick = event => {
     event.preventDefault();
-    // Destructure UpvoteMovie and history from the components props
-    const { upvoteMovie, history } = this.props;
+    // Destructure UpvoteMovie from the components props
+    const { upvoteMovie } = this.props;
     // Create the movie with the Redux action
     upvoteMovie(this.props.movie);
     // redirect to /movies/:movieId route
@@ -37,8 +37,8 @@ class MovieShow extends Component {
 
   handleDownvoteClick = event => {
     event.preventDefault();
-    // Destructure downvoteMovie and history from the components props
-    const { downvoteMovie, history } = this.props;
+    // Destructure downvoteMovie from the components props
+    const { downvoteMovie } = this.props;
     // Create the movie with the Redux action
     downvoteMovie(this.props.movie);
     // redirect to /movies/:movieId route
@@ -92,7 +92,7 @@ class MovieShow extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const movie = state.movies.find(movie => movie.id == ownProps.match.params.movieId)
+  const movie = state.movies.find(movie => movie.id === ownProps.match.params.movieId)
 
   if (movie) {
     return { movie }
