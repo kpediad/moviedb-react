@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { editMovie } from '../actions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWindowClose, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 class MoviesEdit extends Component {
 
@@ -22,8 +24,16 @@ class MoviesEdit extends Component {
     const { editMovie, history } = this.props;
     // Create the movie with the Redux action
     editMovie(this.state);
-    // redirect to /movies route
-    history.push('/movies')
+    // redirect to /movies/:movieId route
+    history.push(`/movies/${this.state.id}`);
+  }
+
+  handleOnCancel = event => {
+    event.preventDefault();
+    // Destructure history from the components props
+    const { history } = this.props;
+    // redirect to /movies/:movieId route
+    history.push(`/movies/${this.state.id}`);
   }
 
   handleTitleOnChange = event => {
@@ -68,7 +78,14 @@ class MoviesEdit extends Component {
                   <label className="col-form-label col-form-label-sm">Synopsis: </label>
                   <textarea className="form-control" rows="8" onChange={this.handleSynopsisOnChange} value={this.state.synopsis}/>
                   <br />
-                  <input type="submit" className="btn btn-primary" value="Edit Movie" />
+                  <div className="row">
+                    <div className="col-6">
+                      <button type="submit" className="btn btn-primary"><FontAwesomeIcon icon={faEdit} /> Edit Movie</button>
+                    </div>
+                    <div className="col-6 text-right">
+                      <button className="btn btn-danger" onClick={this.handleOnCancel}><FontAwesomeIcon icon={faWindowClose} /> Cancel</button>
+                    </div>
+                  </div>
                 </form>
               </div>
             </div>
