@@ -1,6 +1,4 @@
 export function addMovie(movie) {
-  console.log(JSON.stringify({movie: movie}));
-  console.log({movie: movie});
   return function(dispatch){
     return fetch('/movies', {
       method: 'post',
@@ -9,17 +7,23 @@ export function addMovie(movie) {
     }).then(res => {
         return res.json()
       }).then(responseJson => {
-        console.log(responseJson);
-      //dispatch({type: 'ADD_MOVIE', movie})
+        dispatch({type: 'ADD_MOVIE', responseJson})
     })
   }
 }
 
 export function deleteMovie(movie) {
-  return {
-    type: 'DELETE_MOVIE',
-    movie
-  };
+  return function(dispatch){
+    return fetch(`/movies/${movie.id}`, {
+      method: 'delete',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({movie: movie})
+    }).then(res => {
+        return res.json()
+      }).then(responseJson => {
+        dispatch({type: 'DELETE_MOVIE', responseJson})
+    })
+  }
 }
 
 export function editMovie(movie) {
