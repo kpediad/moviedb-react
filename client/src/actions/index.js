@@ -27,10 +27,17 @@ export function deleteMovie(movie) {
 }
 
 export function editMovie(movie) {
-  return {
-    type: 'EDIT_MOVIE',
-    movie
-  };
+  return function(dispatch){
+    return fetch(`/movies/${movie.id}`, {
+      method: 'put',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({movie: movie})
+    }).then(res => {
+        return res.json()
+      }).then(responseJson => {
+        dispatch({type: 'EDIT_MOVIE', responseJson})
+    })
+  }
 }
 
 export function upvoteMovie(movie) {
