@@ -9,7 +9,7 @@ const MovieDBAbout = props =>
       <div className="col-6">
         <div className="card text-white bg-primary mb-3" style={{textAlign: 'center'}}>
           <h3 className="card-header"><FontAwesomeIcon icon={faFilm} /> MovieDB</h3>
-          <img src="/moviedb.jpg" alt="MovieDB image" />
+          <img src="/moviedb.jpg" alt="MovieDB" />
         </div>
       </div>
       <div className="col-6 align-self-center">
