@@ -32,20 +32,7 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
-    respond_to do |format|
-      format.html {render :show}
-      format.json {render json: @movies, include: '**', status: 200}
-    end
-  end
-
-  # We will not need a show action or route but we keep it here to help up
-  # adapt the required actions/routes to use json format
-
-  def show
-    respond_to do |format|
-      format.html {render :show}
-      format.json {render json: @movie, include: '**', status: 200}
-    end
+    render json: @movies, include: '**', status: 200
   end
 
   def destroy

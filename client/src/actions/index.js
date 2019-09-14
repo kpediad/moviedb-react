@@ -55,7 +55,7 @@ export function fetchMovies() {
 
   return function(dispatch){
     dispatch({type: 'LOADING_MOVIES'})
-    return fetch('/movies.json')
+    return fetch('/movies')
       .then(res => {
         return res.json()
       }).then(responseJson => {
