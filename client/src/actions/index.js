@@ -41,10 +41,17 @@ export function editMovie(movie) {
 }
 
 export function upvoteMovie(movie) {
-  return {
-    type: 'UPVOTE_MOVIE',
-    movie
-  };
+  return function(dispatch){
+    return fetch(`/movies/${movie.id}`, {
+      method: 'patch',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({movie: movie})
+    }).then(res => {
+        return res.json()
+      }).then(responseJson => {
+        dispatch({type: 'UPVOTE_MOVIE', responseJson})
+    })
+  }
 }
 
 export function downvoteMovie(movie) {
