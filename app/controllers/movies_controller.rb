@@ -5,37 +5,31 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
     if @movie.save then
-      flash.notice = "New movie was created successfully!"
-      redirect_to movies_path
+      render json: @movie, status: :created
     else
-      flash.now.alert = "#{@movie.error_msg}"
-      if @movie.reviews.first then
-        @reviews = @movie.reviews
-      else
-        @reviews = @movie.reviews.build
-      end
-      render :new
+      render json: { message: @movie.error_msg }, status: :unprocessable_entity
     end
   end
 
   def update
     if @movie.update(movie_params) then
-      flash.notice = "Movie details were updated successfully!"
-      redirect_to movie_path(@movie)
+      render json: @movie, status: :ok
     else
-      flash.now.alert = "#{@movie.error_msg}"
-      @reviews = @movie.reviews
-      @edit = true
-      render :new
+      render json: { message: @movie.error_msg }, status: :unprocessable_entity
     end
   end
 
   def index
     @movies = Movie.all
-    render json: @movies, include: '**', status: 200
+    render json: @movies, status: :ok
   end
 
   def destroy
+    if @movie.delete then
+      render json: @movie, status: :ok
+    else
+      render json: { message: @movie.error_msg }, status: :unprocessable_entity
+    end
   end
 
   private
