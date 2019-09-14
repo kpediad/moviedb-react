@@ -7,7 +7,7 @@ export function addMovie(movie) {
     }).then(res => {
         return res.json()
       }).then(responseJson => {
-        dispatch({type: 'ADD_MOVIE', responseJson})
+        dispatch({type: 'ADD_MOVIE', movie: responseJson})
     })
   }
 }
@@ -21,7 +21,7 @@ export function deleteMovie(movie) {
     }).then(res => {
         return res.json()
       }).then(responseJson => {
-        dispatch({type: 'DELETE_MOVIE', responseJson})
+        dispatch({type: 'DELETE_MOVIE', movie: responseJson})
     })
   }
 }
@@ -35,7 +35,7 @@ export function editMovie(movie) {
     }).then(res => {
         return res.json()
       }).then(responseJson => {
-        dispatch({type: 'EDIT_MOVIE', responseJson})
+        dispatch({type: 'EDIT_MOVIE', movie: responseJson})
     })
   }
 }
@@ -43,13 +43,13 @@ export function editMovie(movie) {
 export function upvoteMovie(movie) {
   return function(dispatch){
     return fetch(`/movies/${movie.id}`, {
-      method: 'patch',
+      method: 'put',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({movie: movie})
     }).then(res => {
         return res.json()
       }).then(responseJson => {
-        dispatch({type: 'UPVOTE_MOVIE', responseJson})
+        dispatch({type: 'UPVOTE_MOVIE', movie: responseJson})
     })
   }
 }
@@ -57,13 +57,13 @@ export function upvoteMovie(movie) {
 export function downvoteMovie(movie) {
   return function(dispatch){
     return fetch(`/movies/${movie.id}`, {
-      method: 'patch',
+      method: 'put',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({movie: movie})
     }).then(res => {
         return res.json()
       }).then(responseJson => {
-        dispatch({type: 'DOWNVOTE_MOVIE', responseJson})
+        dispatch({type: 'DOWNVOTE_MOVIE', movie: responseJson})
     })
   }
 }
