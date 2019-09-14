@@ -55,10 +55,17 @@ export function upvoteMovie(movie) {
 }
 
 export function downvoteMovie(movie) {
-  return {
-    type: 'DOWNVOTE_MOVIE',
-    movie
-  };
+  return function(dispatch){
+    return fetch(`/movies/${movie.id}`, {
+      method: 'patch',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({movie: movie})
+    }).then(res => {
+        return res.json()
+      }).then(responseJson => {
+        dispatch({type: 'DOWNVOTE_MOVIE', responseJson})
+    })
+  }
 }
 
 export function sortMovies(column, direction) {
@@ -70,7 +77,6 @@ export function sortMovies(column, direction) {
 }
 
 export function fetchMovies() {
-
   return function(dispatch){
     dispatch({type: 'LOADING_MOVIES'})
     return fetch('/movies')
