@@ -25,7 +25,8 @@ class MovieTable extends Component {
     }
   }
 
-  handleHeaderClick = column => {
+  handleHeaderClick = (event, column) => {
+    event.preventDefault();
     let new_sort_direction = 'asc';
     if (column === this.state.sort_column) {
       new_sort_direction = this.toggle(this.state.sort_direction);
@@ -39,25 +40,25 @@ class MovieTable extends Component {
   }
 
   render(){
-    let titleHeader = <th scope="col" onClick={() => this.handleHeaderClick('title')}><Link style={{ textDecoration: 'none' }}>Title</Link></th>;
+    let titleHeader = <th scope="col"><Link onClick={event => this.handleHeaderClick(event, 'title')} to='' style={{ textDecoration: 'none' }}>Title</Link></th>;
     if(this.state.sort_column === 'title') {
-      titleHeader = <th scope="col" onClick={() => this.handleHeaderClick('title')}><Link style={{ textDecoration: 'none' }}>Title <FontAwesomeIcon icon={faSortUp} /></Link></th>;
+      titleHeader = <th scope="col"><Link onClick={event => this.handleHeaderClick(event, 'title')} to='' style={{ textDecoration: 'none' }}>Title <FontAwesomeIcon icon={faSortUp} /></Link></th>;
       if(this.state.sort_direction === 'desc') {
-        titleHeader = <th scope="col" onClick={() => this.handleHeaderClick('title')}><Link style={{ textDecoration: 'none' }}>Title <FontAwesomeIcon icon={faSortDown} /></Link></th>;
+        titleHeader = <th scope="col"><Link onClick={event => this.handleHeaderClick(event, 'title')} to='' style={{ textDecoration: 'none' }}>Title <FontAwesomeIcon icon={faSortDown} /></Link></th>;
       }
     }
-    let yearHeader = <th scope="col" onClick={() => this.handleHeaderClick('year')}><Link style={{ textDecoration: 'none' }}>Release Year</Link></th>;
+    let yearHeader = <th scope="col"><Link onClick={event => this.handleHeaderClick(event, 'year')} to='' style={{ textDecoration: 'none' }}>Release Year</Link></th>;
     if(this.state.sort_column === 'year') {
-      yearHeader = <th scope="col" onClick={() => this.handleHeaderClick('year')}><Link style={{ textDecoration: 'none' }}>Release Year <FontAwesomeIcon icon={faSortUp} /></Link></th>;
+      yearHeader = <th scope="col"><Link onClick={event => this.handleHeaderClick(event, 'year')} to='' style={{ textDecoration: 'none' }}>Release Year <FontAwesomeIcon icon={faSortUp} /></Link></th>;
       if(this.state.sort_direction === 'desc') {
-        yearHeader = <th scope="col" onClick={() => this.handleHeaderClick('year')}><Link style={{ textDecoration: 'none' }}>Release Year <FontAwesomeIcon icon={faSortDown} /></Link></th>;
+        yearHeader = <th scope="col"><Link onClick={event => this.handleHeaderClick(event, 'year')} to='' style={{ textDecoration: 'none' }}>Release Year <FontAwesomeIcon icon={faSortDown} /></Link></th>;
       }
     }
-    let scoreHeader = <th scope="col" onClick={() => this.handleHeaderClick('score')}><Link style={{ textDecoration: 'none' }}>Movie Score</Link></th>;
+    let scoreHeader = <th scope="col"><Link onClick={event => this.handleHeaderClick(event, 'score')} to='' style={{ textDecoration: 'none' }}>Movie Score</Link></th>;
     if(this.state.sort_column === 'score') {
-      scoreHeader = <th scope="col" onClick={() => this.handleHeaderClick('score')}><Link style={{ textDecoration: 'none' }}>Movie Score <FontAwesomeIcon icon={faSortUp} /></Link></th>;
+      scoreHeader = <th scope="col"><Link onClick={event => this.handleHeaderClick(event, 'score')} to='' style={{ textDecoration: 'none' }}>Movie Score <FontAwesomeIcon icon={faSortUp} /></Link></th>;
       if(this.state.sort_direction === 'desc') {
-        scoreHeader = <th scope="col" onClick={() => this.handleHeaderClick('score')}><Link style={{ textDecoration: 'none' }}>Movie Score <FontAwesomeIcon icon={faSortDown} /></Link></th>;
+        scoreHeader = <th scope="col"><Link onClick={event => this.handleHeaderClick(event, 'score')} to='' style={{ textDecoration: 'none' }}>Movie Score <FontAwesomeIcon icon={faSortDown} /></Link></th>;
       }
     }
     return (
