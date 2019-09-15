@@ -31,7 +31,9 @@ class MoviesPage extends Component {
               <Route path={`${this.props.match.url}/:movieId/edit`} component={MoviesEdit}/>
               <Route path={`${this.props.match.url}/:movieId`} component={MovieShow}/>
               <Route exact path={this.props.match.url} render={() => (
-                <h3 style={{textAlign: 'center'}}>Select a movie from the list</h3>
+                <div className="container sticky-top">
+                  <h3 style={{textAlign: 'center'}}>Select a movie from the list</h3>
+                </div>
               )}/>
             </Switch>
           </div>

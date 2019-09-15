@@ -60,7 +60,7 @@ class MoviesNew extends Component {
 
   render(){
     return (
-      <div className="container">
+      <div className="container sticky-top">
         <div className="row justify-content-center">
           <div className="col-10">
             <div className="form-box">

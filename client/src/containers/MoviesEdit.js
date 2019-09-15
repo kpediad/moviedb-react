@@ -62,14 +62,14 @@ class MoviesEdit extends Component {
   render(){
     if (Object.getOwnPropertyNames(this.props.movie).length === 0) {
       return (
-        <div>
+        <div className="container sticky-top">
           <h3 style={{textAlign: 'center'}}>Movie does not exist!</h3>
           <h3 style={{textAlign: 'center'}}>Select a movie from the list</h3>
         </div>
       );
     }
     return (
-      <div className="container">
+      <div className="container sticky-top">
         <div className="row justify-content-center">
           <div className="col-10">
             <div className="form-box">
