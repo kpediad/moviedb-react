@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
 
-  before_action :validate_movie, only: [:edit, :update, :show, :destroy]
+  before_action :validate_movie, only: [:update, :destroy]
 
   def create
     @movie = Movie.new(movie_params)

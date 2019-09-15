@@ -22,7 +22,13 @@ class MoviesNew extends Component {
     // Destructure addMovie and history from the components props
     const { addMovie, history } = this.props;
     // Create the movie with the Redux action
-    addMovie(this.state);
+    let result = addMovie(this.state);
+    //console.log(result);
+    if (result.error) {
+      console.log(result.error);
+      alert(result.error);
+      return
+    }
     // redirect to /movies route
     history.push('/movies')
   }

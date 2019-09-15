@@ -23,7 +23,13 @@ class MoviesEdit extends Component {
     // Destructure addMovie and history from the components props
     const { editMovie, history } = this.props;
     // Create the movie with the Redux action
-    editMovie(this.state);
+    let result = editMovie(this.state);
+    console.log(result);
+    if (result.error) {
+      console.log(result.error);
+      alert(result.error);
+      return
+    }
     // redirect to /movies/:movieId route
     history.push(`/movies/${this.state.id}`);
   }

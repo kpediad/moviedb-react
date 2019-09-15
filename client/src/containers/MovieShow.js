@@ -11,7 +11,13 @@ class MovieShow extends Component {
     // Destructure UpvoteMovie from the components props
     const { upvoteMovie } = this.props;
     // Create the movie with the Redux action
-    upvoteMovie(this.props.movie);
+    let result = upvoteMovie(this.props.movie);
+    console.log(result);
+    if (result.error) {
+      console.log(result.error);
+      alert(result.error);
+      return
+    }
     // redirect to /movies/:movieId route
     //history.push(`/movies/${this.props.movie.id}`);
     //this.forceUpdate();
@@ -30,7 +36,13 @@ class MovieShow extends Component {
     // Destructure deleteMovie and history from the components props
     const { deleteMovie, history } = this.props;
     // Delete the movie with the Redux action
-    deleteMovie(this.props.movie);
+    let result = deleteMovie(this.props.movie);
+    console.log(result);
+    if (result.error) {
+      console.log(result.error);
+      alert(result.error);
+      return
+    }
     // redirect to /movies route
     history.push('/movies')
   }
@@ -40,7 +52,13 @@ class MovieShow extends Component {
     // Destructure downvoteMovie from the components props
     const { downvoteMovie } = this.props;
     // Create the movie with the Redux action
-    downvoteMovie(this.props.movie);
+    let result = downvoteMovie(this.props.movie);
+    console.log(result);
+    if (result.error) {
+      console.log(result.error);
+      alert(result.error);
+      return
+    }
     // redirect to /movies/:movieId route
     //history.push(`/movies/${this.props.movie.id}`);
     //this.forceUpdate();
