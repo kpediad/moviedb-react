@@ -14,8 +14,7 @@ export function addMovie(movie) {
         dispatch({type: 'SORT_MOVIES', column: window.sort_column, direction: window.sort_direction})
         return responseJson;
     }).catch(error => {
-        console.log(error);
-        return {error: error};
+        return {error: "Network/Server error!"};
       });
   }
 }
@@ -36,8 +35,7 @@ export function deleteMovie(movie) {
         dispatch({type: 'SORT_MOVIES', column: window.sort_column, direction: window.sort_direction})
         return responseJson;
     }).catch(error => {
-        console.log(error);
-        return {error: error};
+        return {error: "Network/Server error!"};
       });
   }
 }
@@ -58,8 +56,7 @@ export function editMovie(movie) {
         dispatch({type: 'SORT_MOVIES', column: window.sort_column, direction: window.sort_direction})
         return responseJson;
     }).catch(error => {
-        console.log(error);
-        return {error: error};
+        return {error: "Network/Server error!"};
       });
   }
 }
@@ -80,8 +77,7 @@ export function upvoteMovie(movie) {
         dispatch({type: 'SORT_MOVIES', column: window.sort_column, direction: window.sort_direction})
         return responseJson;
     }).catch(error => {
-        console.log(error);
-        return {error: error};
+        return {error: "Network/Server error!"};
       });
   }
 }
@@ -102,8 +98,7 @@ export function downvoteMovie(movie) {
         dispatch({type: 'SORT_MOVIES', column: window.sort_column, direction: window.sort_direction})
         return responseJson;
     }).catch(error => {
-        console.log(error);
-        return {error: error};
+        return {error: "Network/Server error!"};
       });
   }
 }
@@ -127,8 +122,7 @@ export function fetchMovies() {
         dispatch({type: 'SORT_MOVIES', column: 'title', direction: 'asc'})
         return responseJson;
     }).catch(error => {
-        console.log(error);
-        return {error: error};
+        return {error: "Network/Server error!"};
       });
   }
 }
