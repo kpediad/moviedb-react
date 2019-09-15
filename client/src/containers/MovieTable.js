@@ -14,6 +14,8 @@ class MovieTable extends Component {
       sort_column: 'title',
       sort_direction: 'asc'
     };
+    window.sort_column = 'title';
+    window.sort_direction = 'asc';
   }
 
   toggle = direction => {
@@ -37,6 +39,8 @@ class MovieTable extends Component {
       sort_column: column,
       sort_direction: new_sort_direction
     });
+    window.sort_column = column;
+    window.sort_direction = new_sort_direction;
   }
 
   render(){

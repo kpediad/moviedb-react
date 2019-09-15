@@ -11,16 +11,12 @@ class MovieShow extends Component {
     // Destructure UpvoteMovie from the components props
     const { upvoteMovie } = this.props;
     // Create the movie with the Redux action
-    let result = upvoteMovie(this.props.movie);
-    console.log(result);
-    if (result.error) {
-      console.log(result.error);
-      alert(result.error);
-      return
-    }
-    // redirect to /movies/:movieId route
-    //history.push(`/movies/${this.props.movie.id}`);
-    //this.forceUpdate();
+    upvoteMovie(this.props.movie).then(result => {
+      if (result.error) {
+        alert(result.error);
+        return
+      }
+    });
   }
 
   handleEditClick = event => {
@@ -36,15 +32,14 @@ class MovieShow extends Component {
     // Destructure deleteMovie and history from the components props
     const { deleteMovie, history } = this.props;
     // Delete the movie with the Redux action
-    let result = deleteMovie(this.props.movie);
-    console.log(result);
-    if (result.error) {
-      console.log(result.error);
-      alert(result.error);
-      return
-    }
-    // redirect to /movies route
-    history.push('/movies')
+    deleteMovie(this.props.movie).then(result => {
+      if (result.error) {
+        alert(result.error);
+        return
+      }
+      // redirect to /movies route
+      history.push('/movies')
+    });
   }
 
   handleDownvoteClick = event => {
@@ -52,16 +47,12 @@ class MovieShow extends Component {
     // Destructure downvoteMovie from the components props
     const { downvoteMovie } = this.props;
     // Create the movie with the Redux action
-    let result = downvoteMovie(this.props.movie);
-    console.log(result);
-    if (result.error) {
-      console.log(result.error);
-      alert(result.error);
-      return
-    }
-    // redirect to /movies/:movieId route
-    //history.push(`/movies/${this.props.movie.id}`);
-    //this.forceUpdate();
+    downvoteMovie(this.props.movie).then(result => {
+      if (result.error) {
+        alert(result.error);
+        return
+      }
+    });
   }
 
   render(){

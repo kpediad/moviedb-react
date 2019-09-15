@@ -7,14 +7,14 @@ export function addMovie(movie) {
     }).then(res => {
         return res.json()
       }).then(responseJson => {
-        console.log(responseJson);
         if (responseJson.message) {
-          console.error(responseJson.message);
           return {error: responseJson.message};
         }
         dispatch({type: 'ADD_MOVIE', movie: responseJson})
+        dispatch({type: 'SORT_MOVIES', column: window.sort_column, direction: window.sort_direction})
+        return responseJson;
     }).catch(error => {
-        console.error(error);
+        console.log(error);
         return {error: error};
       });
   }
@@ -30,12 +30,13 @@ export function deleteMovie(movie) {
         return res.json()
       }).then(responseJson => {
         if (responseJson.message) {
-          console.error(responseJson.message);
           return {error: responseJson.message};
         }
         dispatch({type: 'DELETE_MOVIE', movie: responseJson})
+        dispatch({type: 'SORT_MOVIES', column: window.sort_column, direction: window.sort_direction})
+        return responseJson;
     }).catch(error => {
-        console.error(error);
+        console.log(error);
         return {error: error};
       });
   }
@@ -51,12 +52,13 @@ export function editMovie(movie) {
         return res.json()
       }).then(responseJson => {
         if (responseJson.message) {
-          console.error(responseJson.message);
           return {error: responseJson.message};
         }
         dispatch({type: 'EDIT_MOVIE', movie: responseJson})
+        dispatch({type: 'SORT_MOVIES', column: window.sort_column, direction: window.sort_direction})
+        return responseJson;
     }).catch(error => {
-        console.error(error);
+        console.log(error);
         return {error: error};
       });
   }
@@ -72,12 +74,13 @@ export function upvoteMovie(movie) {
         return res.json()
       }).then(responseJson => {
         if (responseJson.message) {
-          console.error(responseJson.message);
           return {error: responseJson.message};
         }
         dispatch({type: 'UPVOTE_MOVIE', movie: responseJson})
+        dispatch({type: 'SORT_MOVIES', column: window.sort_column, direction: window.sort_direction})
+        return responseJson;
     }).catch(error => {
-        console.error(error);
+        console.log(error);
         return {error: error};
       });
   }
@@ -93,12 +96,13 @@ export function downvoteMovie(movie) {
         return res.json()
       }).then(responseJson => {
         if (responseJson.message) {
-          console.error(responseJson.message);
           return {error: responseJson.message};
         }
         dispatch({type: 'DOWNVOTE_MOVIE', movie: responseJson})
+        dispatch({type: 'SORT_MOVIES', column: window.sort_column, direction: window.sort_direction})
+        return responseJson;
     }).catch(error => {
-        console.error(error);
+        console.log(error);
         return {error: error};
       });
   }
@@ -121,8 +125,9 @@ export function fetchMovies() {
       }).then(responseJson => {
         dispatch({type: 'FETCH_MOVIES', movies: responseJson})
         dispatch({type: 'SORT_MOVIES', column: 'title', direction: 'asc'})
+        return responseJson;
     }).catch(error => {
-        console.error(error);
+        console.log(error);
         return {error: error};
       });
   }

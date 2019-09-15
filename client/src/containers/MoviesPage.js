@@ -10,13 +10,12 @@ import { fetchMovies } from '../actions';
 class MoviesPage extends Component {
 
   componentDidMount() {
-    let result = this.props.fetchMovies();
-    //console.log(result);
-    if (result.error) {
-      console.log(result.error);
-      alert(result.error);
-      return
-    }
+    this.props.fetchMovies().then(result => {
+      if (result.error) {
+        alert(result.error);
+        return
+      }
+    });
   }
 
   render() {
