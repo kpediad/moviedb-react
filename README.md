@@ -1,24 +1,34 @@
-# README
+# MovieDB-React
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A react-redux based client app together with a rails based API server to list movies.
 
-Things you may want to cover:
+A movie has:
 
-* Ruby version
+* a title
+* a release year
+* a synopsis and
+* a score
 
-* System dependencies
+Movies can be created, listed, edited, viewed, deleted, upvoted and downvoted.
 
-* Configuration
+## Usage
 
-* Database creation
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-* Database initialization
+To use this app in a development environment, after forking and/or cloning the repository, run `bundle install`, `rails db:migrate` and `rails db:seed` within the main project directory to setup the server side. Then `cd client` and run `npm install`.
 
-* How to run the test suite
+A rake batch job has been setup to start server and client at the same time. Just run `rake start`.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Contributing Bugfixes or Features
 
-* Deployment instructions
+For submitting something back, be it a patch, some documentation, or new feature requires some level of community interactions.
 
-* ...
+Committing code is easy:
+
+- Fork the this repository
+- Create a local development branch for the bugfix or feature
+- Commit and push changes to github
+- Submit a pull request for your changes to be included
+
+## License
+MovieDB is licensed under the [MIT license](http://opensource.org/licenses/MIT).
